@@ -1,0 +1,17 @@
+<!--TBL_OFICINA-->
+<tr>
+    <td>{oficina-denominacion}</td>
+    <td>Desde las <b>{oficina-hora_desde}</b> hasta las <b>{oficina-hora_hasta}</b></td>
+    <td>{oficina-direccion}</td>
+    <td>{unicom-denominacion}</td>
+    <td>
+    	<center>
+    		<button class="btn btn-{oficina-class_turnero_activo} btn-xs" title="¿Turnero activo?"><i class="fa fa-{oficina-icon_turnero_activo}"></i></button>
+    	</center>
+    </td>
+    <td style="text-align: right;">
+		<button class="btn btn-{oficina-class_turnero_activar} btn-xs" onclick="confirma_formulario(3, '{url_app}/oficina/estado_turnero/{oficina-oficina_id}@{oficina-argumento_turnero_activar}');" title="{oficina-title_turnero_activar} turnero WEB"><i class="fa fa-{oficina-icon_turnero_activar}"></i></button>
+		<button class="btn btn-warning btn-xs" onclick="confirma_formulario(3, '{url_app}/oficina/editar/{oficina-oficina_id}');" title="Editar oficina"><i class="fa fa-edit"></i></button>
+	</td>
+</tr>
+<!--TBL_OFICINA-->

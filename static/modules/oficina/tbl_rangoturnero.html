@@ -1,0 +1,15 @@
+<!--TBL_RANGOTURNERO-->
+<tr>
+    <td><b>{rangoturnero-fecha_desde}</b></td>
+    <td><b>{rangoturnero-fecha_hasta}</b></td>
+    <td>
+    	<center>
+    		<button class="btn btn-{rangoturnero-class_estado} btn-xs" title="¿Rango activo?"><i class="fa fa-{rangoturnero-icon_estado}"></i></button>
+    	</center>
+    </td>
+    <td style="text-align: right;">
+		<button class="btn btn-{rangoturnero-class_rango_activar} btn-xs" onclick="confirma_formulario(3, '{url_app}/oficina/estado_rangoturnero/{rangoturnero-rangoturnero_id}@{rangoturnero-argumento_rango_activar}');" title="{rangoturnero-title_rango_activar} rango de fechas"><i class="fa fa-{rangoturnero-icon_rango_activar}"></i></button>
+        <button class="btn btn-info btn-xs" onclick="location.href='{url_app}/oficina/consultar_rango/{rangoturnero-rangoturnero_id}';" title="Consultar rango de fechas"><i class="fa fa-eye"></i></button>
+	</td>
+</tr>
+<!--TBL_RANGOTURNERO-->

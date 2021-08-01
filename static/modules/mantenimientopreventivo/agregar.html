@@ -1,0 +1,191 @@
+<link rel="stylesheet" type="text/css" href="{url_static}vendors/jquery-multi-select/css/multi-select.css" />
+<div class="col-lg-12">
+    <ul class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i> HOME</a></li>
+        <li><a href="{url_app}/mantenimientopreventivo/panel">Panel Mantenimientos Preventivos</a></li>
+    </ul>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2><i class="fa fa-plus-square"></i>&nbsp;&nbsp; Agregar Mantenimiento Preventivo</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class=" form">
+                <form class="form" id="formulario_guardar" method="post" action="{url_app}/mantenimientopreventivo/guardar">
+                    <div class="col-lg-4">
+                        <div class="form-group col-lg-6">
+                            <label>Prensa Externa</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" checked="" value="1" id="informe_si" name="informe"> SI
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" value="0" id="informe_no" name="informe"> NO
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Nota EUCOP</label>
+                            <input type="text" class="form-control" id="numero_eucop" name="numero_eucop" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-8" style="padding-left: 0px;">
+                        <div class="form-group col-lg-6">
+                            <label>Categoría</label>
+                            <select class="form-control m-bot15" name="mantenimientocategoria" id="mantenimientocategoria" required>
+                                {slt_mantenimientocategoria}
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Corte por</label>
+                            <select class="form-control m-bot15" name="mantenimientoinstitucion" id="mantenimientoinstitucion" required>
+                                {slt_mantenimientoinstitucion}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group col-lg-4">
+                            <label>Fecha Inicio</label>
+                            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" required>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>Hora Inicio</label>
+                            <input type="time" class="form-control" id="hora_inicio" name="hora_inicio" required>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>Hora Fin</label>
+                            <input type="time" class="form-control" id="hora_fin" name="hora_fin" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group col-lg-6">
+                            <label>Responsable EDELAR</label>
+                            <input type="text" class="form-control" id="responsable_edelar" name="responsable_edelar" required>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Responsable Contratista</label>
+                            <input type="text" class="form-control" id="responsable_contratista" name="responsable_contratista" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Motivo</label>
+                            <input type="text" class="form-control" id="motivo" name="motivo" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Tarea del Mantenimiento</label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group col-lg-12">
+                            <label>Sector</label>
+                            <textarea class="form-control" id="sector" name="sector" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Calles</label>
+                            <textarea class="form-control" id="calles" name="calles" rows="4" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group col-lg-6">
+                            <label>Seleccionar departamentos</label>
+                            <select name="departamento[]" class="multi-select" multiple="" id="departamento" required>
+                                {slt_departamento}
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6" style="padding-left: 1.3%;">
+                            <label>Seleccionar Barrio</label>
+                            <select name="barrio[]" class="multi-select" multiple="" id="barrio">
+                                {slt_barrio}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top: 2%;" align="right">
+                        <button type="submit" class="btn btn-app"> <i class="fa fa-save"></i> Agregar </button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{url_static}vendors/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="{url_static}vendors/jquery-multi-select/js/jquery.quicksearch.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $('#departamento').multiSelect( {
+        selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Buscar departamento'>",
+        selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Buscar departamento'>",
+        afterInit: function (ms) {
+            var that = this,
+            $selectableSearch = that.$selectableUl.prev(),
+            $selectionSearch = that.$selectionUl.prev(),
+            selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+            selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+            .on('keydown', function (e) {
+                if (e.which === 40) {
+                    that.$selectableUl.focus();
+                    return false;
+                }
+            });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+            .on('keydown', function (e) {
+                if (e.which == 40) {
+                    that.$selectionUl.focus();
+                    return false;
+                }
+            });
+        },
+        
+        afterSelect: function () {
+            this.qs1.cache();
+            this.qs2.cache();
+        },
+        afterDeselect: function () {
+            this.qs1.cache();
+            this.qs2.cache();
+        }
+    });
+
+    $('#barrio').multiSelect( {
+        selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Buscar barrio'>",
+        selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Buscar barrio'>",
+        afterInit: function (ms) {
+            var that = this,
+            $selectableSearch = that.$selectableUl.prev(),
+            $selectionSearch = that.$selectionUl.prev(),
+            selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+            selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+            .on('keydown', function (e) {
+                if (e.which === 40) {
+                    that.$selectableUl.focus();
+                    return false;
+                }
+            });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+            .on('keydown', function (e) {
+                if (e.which == 40) {
+                    that.$selectionUl.focus();
+                    return false;
+                }
+            });
+        },
+        
+        afterSelect: function () {
+            this.qs1.cache();
+            this.qs2.cache();
+        },
+        afterDeselect: function () {
+            this.qs1.cache();
+            this.qs2.cache();
+        }
+    });
+</script>

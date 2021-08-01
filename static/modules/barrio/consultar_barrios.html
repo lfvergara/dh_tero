@@ -1,0 +1,44 @@
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2qIBf-FgJxG2CWnwZrhsSno2LiRY_AM&libraries=drawing,geometry" type="text/javascript"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlw6g1hwERiX7nh3OP-weYVPsjM25wvog&libraries=drawing,geometry" type="text/javascript"></script>
+<script type="text/javascript" src="{url_static}vendors/google-maps/edit-coordenadas-todos.js"></script>
+<style type="text/css">
+  #myMap,
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    height: 500px;
+  }
+</style>
+<div class="col-lg-12">
+  <ul class="breadcrumb">
+    <li><a href="#"><i class="fa fa-home"></i> HOME</a></li>
+    <li><a href="{url_app}/barrio/panel">Panel Barrios</a></li>
+  </ul>
+</div>
+<div class="col-lg-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><i class="fa fa-map-marker"></i>&nbsp;&nbsp; Geo Referencia de Barrios</h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div id="myMap"></div>    
+    </div>
+  </div>
+</div>
+<textarea id="mapData" style="display:none;">
+  {
+  "zoom":10,"tilt":0,"mapTypeId":"terrain","center":{"lat":-29.4156342,"lng":-66.8679657},
+  "overlays":[
+              {lst_coordenada}
+             ]
+  }
+</textarea>
+<script type="text/javascript">
+  BlitzMap.setMap( 'myMap', true, 'mapData');
+</script>

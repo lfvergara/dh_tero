@@ -1,0 +1,18 @@
+<!--TBL_MANTENIMIENTOPREVENTIVO-->
+<tr>
+  <td>MOTIVO</td>
+  <td>FECHA</td>
+  <td>DIAS_RESTANTES</td>
+  <td class="MANTENIMIENTO_CLASS">ESTADO</td>
+  <td>
+    <center>
+      <button class="btn btn-warning btn-xs" onclick="confirma_formulario(3, '{url_app}/mantenimientopreventivo/editar/MANTENIMIENTO_ID');" title="Editar M. Preventivo"><i class="fa fa-edit"></i></button>
+      <button class="btn btn-primary btn-xs" onclick="confirma_formulario(3, '{url_app}/mantenimientopreventivo/configurar/MANTENIMIENTO_ID');" title="Configurar M. Preventivo"><i class="fa fa-cog"></i></button>
+      <button class="btn btn btn-primary btn-xs" onclick="confirma_formulario(3, '{url_app}/mantenimientopreventivo/editar_coordenadas/MANTENIMIENTO_ID');" title="Editar Geo Referencia"><i class="fa fa-map"></i></button>
+      <button class="btn btn-success btn-xs" onclick="modalMensaje(MANTENIMIENTO_ID);" title="Informar M. Preventivo"><i class="fa fa-at"></i></button>
+      <button class="btn btn-success btn-xs" onclick="enviarWhatsapp(MANTENIMIENTO_ID);" title="Enviar por Whatsapp"><i class="fa fa-whatsapp"></i></button>
+      <a class="btn btn-info btn-xs" href="{url_app}/mantenimientopreventivo/consultar/MANTENIMIENTO_ID" title="Ver Mantenimiento"><i class="fa fa-eye"></i></a>
+    </center>
+  </td>
+</tr>
+<!--TBL_MANTENIMIENTOPREVENTIVO-->

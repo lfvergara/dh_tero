@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Prensa Corte Programado</title>
+    </head>
+    <body>
+        <hr />
+        <table style=" width: 100%, border: none;" cellspacing="0">
+            <tr style=" text-align: right; font-size: 16px;">
+                <td>{fecha_dia_semana}, {fecha_dia} de {fecha_mes} del {fecha_anio}</td>
+            </tr>
+            <tr style=" text-align: left; font-size: 18px; padding:5px 0 8px 0;">
+                <td><strong>A: GERENCIA PROVINCIAL</strong></td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr style=" text-align: left; font-size: 18px;">
+                <td><strong>DE:</strong> C.M.D. - S.G.O. {mantenimientopreventivo-numero_eucop}<br></td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr style=" text-align: left; font-size: 18px;">
+                <td><strong>REF:</strong> CORTE PROGRAMADO<br></td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+        </table>
+        <hr>
+        <p>Se remite detalle de Corte Programado para realizar la correspondiente PRENSA.</p>
+        <hr />
+        <font style="font-weight: bold;">Fecha: </font> {mantenimientopreventivo-fecha_inicio}
+        <br><br>
+        <font style="font-weight: bold;">Horario: </font> Desde: {mantenimientopreventivo-hora_inicio} -- Hasta: {mantenimientopreventivo-hora_fin}
+        <br><br>
+        <font style="font-weight: bold;">Instituci&oacute;n solicitante: </font>{mantenimientoinstitucion-denominacion}
+        <br><br>
+        <font style="font-weight: bold;">Responsable EDELAR S.A.: </font>{mantenimientopreventivo-responsable_edelar}
+        <br><br>
+        <font style="font-weight: bold;">Responsable contratista: </font>{mantenimientopreventivo-responsable_contratista}
+        <br><br>
+        <font style="font-weight: bold;">Categor&iacute;a: </font>{mantenimientocategoria-denominacion}
+        <br><br>
+        <font style="font-weight: bold;">Departamentos: </font> {mantenimientopreventivo-departamentos}
+        <br><br>
+        <font style="font-weight: bold;">Motivo: </font> {mantenimientopreventivo-motivo}
+        <br><br>
+        <font style="font-weight: bold;">Tarea: </font> {mantenimientopreventivo-descripcion}
+        <br><br>
+        <font style="font-weight: bold;">Sector: </font> {mantenimientoubicacion-sector} 
+        <br><br>
+        <font style="font-weight: bold;">Calles: </font> {mantenimientoubicacion-calles} 
+        <br><br>
+    </body>
+</html>
