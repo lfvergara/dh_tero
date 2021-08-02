@@ -2,3 +2,4 @@ private/
 logs/
 static/common/alertas/
 settings.php
+template.html

@@ -29,5 +29,4 @@ if(file_exists($archivo)) {
 	header("Content-Type: $mime");
 	$imagen = readfile($archivo);
 }
-
 ?>
