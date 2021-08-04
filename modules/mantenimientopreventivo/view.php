@@ -12,7 +12,7 @@ class MantenimientoPreventivoView extends View {
 		print $template;
 	}
 
-	function agregar($mantenimientocategoria_collection, $mantenimientoinstitucion_collection, $departamento_collection, $barrio_collection) {
+	function agregar($mantenimientocategoria_collection, $mantenimientoinstitucion_collection, $departamento_collection, $barrio_collection, $numero_eucop) {
 		$gui = file_get_contents("static/modules/mantenimientopreventivo/agregar.html");
 		$gui_slt_categoria = file_get_contents("static/modules/mantenimientopreventivo/slt_mantenimientocategoria.html");
 		$gui_slt_institucion = file_get_contents("static/modules/mantenimientopreventivo/slt_mantenimientoinstitucion.html");
@@ -29,6 +29,7 @@ class MantenimientoPreventivoView extends View {
 		$render = str_replace('{slt_mantenimientocategoria}', $gui_slt_categoria, $render);
 		$render = str_replace('{slt_departamento}', $gui_slt_departamento, $render);
 		$render = str_replace('{slt_barrio}', $gui_slt_barrio, $render);
+		$render = str_replace('{numero_eucop}', $numero_eucop, $render);
 		$render = $this->render_breadcrumb($render);
 		$template = $this->render_template($render);
 		print $template;	

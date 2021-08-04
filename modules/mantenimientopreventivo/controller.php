@@ -44,9 +44,8 @@ class MantenimientoPreventivoController {
     	$where = "SUBSTRING_INDEX(mp.numero_eucop, '/', -1) = {$anio} ORDER BY CONVERT(SUBSTRING_INDEX(mp.numero_eucop, '/', 1), UNSIGNED INTEGER) DESC LIMIT 1";
     	$nuevo_eucop = CollectorCondition()->get('MantenimientoCategoriaMantenimientoPreventivo', $where, 4, $from, $select);
     	$numero_eucop = $nuevo_eucop[0]['NUEVO_EUCOP'];
-		print_r($numero_eucop); exit;
-
-		$this->view->agregar($mantenimientocategoria_collection, $mantenimientoinstitucion_collection, $departamento_collection, $barrio_collection);
+		
+		$this->view->agregar($mantenimientocategoria_collection, $mantenimientoinstitucion_collection, $departamento_collection, $barrio_collection, $numero_eucop);
 	}
 
 	function editar($arg) {
