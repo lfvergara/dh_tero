@@ -31,10 +31,21 @@ class MantenimientoPreventivoController {
 	
 	function agregar() {
 		SessionHandler()->check_session();
+		$anio = substr(date('Y'), -2, 2);
+		print_r($anio); exit;
+
 		$mantenimientocategoria_collection = Collector()->get('MantenimientoCategoria');
     	$mantenimientoinstitucion_collection = Collector()->get('MantenimientoInstitucion');
 		$departamento_collection = Collector()->get('Departamento');
 		$barrio_collection = Collector()->get('Barrio');
+
+
+		$select = "CONCAT((CONVERT(SUBSTRING_INDEX(mp.numero_eucop, '/', 1), UNSIGNED INTEGER) + 1), '/', SUBSTRING_INDEX(mp.numero_eucop, '/', -1)) AS NUEVO_EUCOP";
+    	$from = "mantenimientopreventivo mp";
+    	$where = "SUBSTRING_INDEX(mp.numero_eucop, '/', -1) = 18 ORDER BY CONVERT(SUBSTRING_INDEX(mp.numero_eucop, '/', 1), UNSIGNED INTEGER) DESC LIMIT 1";
+    	$nuevo_eucop = CollectorCondition()->get('MantenimientoCategoriaMantenimientoPreventivo', $where, 4, $from, $select);
+    	$nuevo_eucop = $nuevo_eucop[0]['NUEVO_EUCOP'];
+
 		$this->view->agregar($mantenimientocategoria_collection, $mantenimientoinstitucion_collection, $departamento_collection, $barrio_collection);
 	}
 
