@@ -11,7 +11,6 @@ require_once "modules/distcetnis/model.php";
 require_once "modules/distribuidor/model.php";
 require_once "modules/ceta/model.php";
 require_once "modules/agenda/model.php";
-require_once "modules/areainteres/model.php";
 
 
 class MantenimientoPreventivoController {
@@ -30,11 +29,6 @@ class MantenimientoPreventivoController {
 		$this->view->panel($mantenimiento_collection);
 	}
 
-	function actualizarareas() {
-		$ai = new AreaInteres();
-		$ai->actualizar1();
-	}
-	
 	function agregar() {
 		SessionHandler()->check_session();
 		$anio = substr(date('Y'), -2, 2);
