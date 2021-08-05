@@ -11,7 +11,6 @@ require_once "modules/distcetnis/model.php";
 require_once "modules/distribuidor/model.php";
 require_once "modules/ceta/model.php";
 require_once "modules/agenda/model.php";
-require_once "modules/areainteres/model.php";
 
 
 class MantenimientoPreventivoController {
@@ -28,11 +27,6 @@ class MantenimientoPreventivoController {
     	$where = "mp.fecha_inicio > CURDATE() OR (mp.fecha_inicio = CURDATE() AND mp.hora_fin >= CURTIME()) ORDER BY DIAS_RESTANTES ASC, mp.hora_inicio ASC";
     	$mantenimiento_collection = CollectorCondition()->get('MantenimientoPreventivo', $where, 4, $from, $select);
 		$this->view->panel($mantenimiento_collection);
-	}
-
-	function actualizarareas() {
-		$ai = new AreaInteres();
-		$ai->actualizar1();
 	}
 	
 	function agregar() {
