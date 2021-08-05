@@ -28,6 +28,11 @@ class MantenimientoPreventivoController {
     	$mantenimiento_collection = CollectorCondition()->get('MantenimientoPreventivo', $where, 4, $from, $select);
 		$this->view->panel($mantenimiento_collection);
 	}
+
+	function actualizarareas() {
+		$ai = new AreaInteres();
+		$ai->actualizar1();
+	}
 	
 	function agregar() {
 		SessionHandler()->check_session();
