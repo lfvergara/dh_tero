@@ -21,9 +21,9 @@ class CurriculumController {
     	//require_once "tools/excelreport.php";
 		$fecha_desde = filter_input(INPUT_POST, "fecha_desde");
 		$fecha_hasta = filter_input(INPUT_POST, "fecha_hasta");
-		$select = "cv.denominacion AS DENOMINACION, cv.estudio AS ESTUDIO, cv.titulo AS TITULO, cv.estadocivil AS ESTADOCIVIL, cv.localidad AS LOCALIDAD, cv.direccion AS DIRECCION, cv.correo AS CORREO, cv.telefono AS TELEFONO, cv.mensaje AS MENSAJE, ai.denominacion AS AREA_INTERES, pr.denominacion AS PROVINCIA, cv.fecha_carga AS FECHA, date_format('{fecha_desde}', '%y') as ANO, (SELECT count(cva.curriculum_id) FROM curriculum cva WHERE cva.fecha_carga BETWEEN '2019-01-01' AND '{fecha_hasta}') AS CONTADOR";
+		$select = "cv.denominacion AS DENOMINACION, cv.estudio AS ESTUDIO, cv.titulo AS TITULO, cv.estadocivil AS ESTADOCIVIL, cv.localidad AS LOCALIDAD, cv.direccion AS DIRECCION, cv.correo AS CORREO, cv.telefono AS TELEFONO, cv.mensaje AS MENSAJE, ai.denominacion AS AREA_INTERES, pr.denominacion AS PROVINCIA, cv.fecha_carga AS FECHA, date_format('{$fecha_desde}', '%y') as ANO, (SELECT count(cva.curriculum_id) FROM curriculum cva WHERE cva.fecha_carga BETWEEN '2019-01-01' AND '{$fecha_hasta}') AS CONTADOR";
 		$from = "curriculum cv INNER JOIN areainteres ai ON cv.areainteres = ai.areainteres_id INNER JOIN provincia pr ON cv.provincia = pr.provincia_id";
-		$where = "cv.fecha_carga BETWEEN '{fecha_desde}' AND '{fecha_hasta}' ORDER BY cv.fecha_carga DESC";
+		$where = "cv.fecha_carga BETWEEN '{$fecha_desde}' AND '{$fecha_hasta}' ORDER BY cv.fecha_carga DESC";
 		$curriculum_collection = CollectorCondition()->get('Curriculum', $where, 4, $from, $select);
 		print_r($curriculum_collection);exit;
 
