@@ -1,4 +1,3 @@
-ob_start();
 <?php
 require_once "common/libs/PHPExcel/Classes/PHPExcel.php";
 
@@ -103,8 +102,6 @@ class ExcelReport extends View {
     header('Content-Disposition: attachment;filename="informeCV.xlsx"');
     header('Cache-Control: max-age=0');
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-    file_put_contents('depuracion.txt', ob_get_contents());
-    ob_end_clean();
     $objWriter->save('php://output');
   }
 
