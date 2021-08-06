@@ -25,7 +25,6 @@ class CurriculumController {
 		$from = "curriculum cv INNER JOIN areainteres ai ON cv.areainteres = ai.areainteres_id INNER JOIN provincia pr ON cv.provincia = pr.provincia_id";
 		$where = "cv.fecha_carga BETWEEN '{$fecha_desde}' AND '{$fecha_hasta}' ORDER BY cv.fecha_carga DESC";
 		$curriculum_collection = CollectorCondition()->get('Curriculum', $where, 4, $from, $select);
-		print_r($curriculum_collection);exit;
 
 		$titulo = "Exportador CV";
 		$array_encabezados = array("ID", "EDAD", "ESTUDIO", "TITULO", "ESTADOCIVIL", "LOCALIDAD", "DIRECCION", "CORREO", "TELEFONO", "MENSAJE",
@@ -53,6 +52,7 @@ class CurriculumController {
 			$contador = $contador - 1;
 		}
 		 
+		print_r($array_exportacion);exit;
 		ExcelReport()->extraer_informe($titulo,$array_exportacion);
 	}
 }
