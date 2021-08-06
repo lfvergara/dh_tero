@@ -2,17 +2,14 @@
 
 
 class ExportarReporte {
-	function reporte_cv($query, $array_data) {
-		$query = str_replace(array_keys($array_data), array_values($array_data), $query);
-		$rst = execute_query($query);
-
+	function reporte_cv($array_data) {
 		$titulo = "Exportador CV";
 		$array_encabezados = array("ID", "EDAD", "ESTUDIO", "TITULO", "ESTADOCIVIL", "LOCALIDAD", "DIRECCION", "CORREO", "TELEFONO", "MENSAJE",
 									"AREA_INTERES", "PROVINCIA", "FECHA CARGA");
 		$array_exportacion = array();
 		$array_exportacion[] = $array_encabezados;
 		$contador = 0;
-		foreach ($rst as $clave=>$valor) {
+		foreach ($array_data as $clave=>$valor) {
 			if ($clave == 0) $contador = $valor["CONTADOR"];
 			$array_temp = array(
 				  $contador
