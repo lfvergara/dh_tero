@@ -52,7 +52,7 @@ class CurriculumController {
 			$contador = $contador - 1;
 		}
 		 
-		ExcelReport()->extraer_informe($titulo,$array_exportacion);
+		ExcelReport()->extraer_informe_conjunto($titulo,$array_exportacion);
 	}
 }
 ?>

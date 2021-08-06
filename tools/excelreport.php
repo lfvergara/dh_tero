@@ -95,12 +95,12 @@ class ExcelReport extends View {
     }
 
     //$objPHPExcel->getActiveSheet()->setSharedStyle($this->estilo_informacion, "{$celdas_informacion}");
-    $objPHPExcel->getActiveSheet()->setTitle("infDHTordo");
+    $objPHPExcel->getActiveSheet()->setTitle("DHARMATero");
     $objPHPExcel->setActiveSheetIndex(0);
     $objPHPExcel->getActiveSheet(0)->freezePaneByColumnAndRow(0,4);
 
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="infDHTordo.xlsx"');
+    header('Content-Disposition: attachment;filename="iinformeCV.xlsx"');
     header('Cache-Control: max-age=0');
 
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
