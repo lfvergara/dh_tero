@@ -38,7 +38,7 @@
 <div class="col-md-4 col-sm-4 col-xs-4">
     <div class="x_panel">
         <div class="x_title">
-            <h2><i class="fa fa-plus-square"></i>&nbsp;&nbsp; Agregar localidad</h2>
+            <h2><i class="fa fa-plus-square"></i>&nbsp;&nbsp; Buscar curriculums</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 <li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -47,20 +47,17 @@
         </div>
         <div class="x_content">
             <div class=" form">
-                <form class="form" id="formulario_guardar" method="post" action="{url_app}/localidad/guardar">
+                <form class="form" id="formulario_guardar" method="post" action="{url_app}/curriculum/exportar_cv">
                     <div class="form-group">
-                        <label>Localidad</label>
-                        <input type="text" class="form-control" id="denominacion" name="denominacion" required>
+                        <label>Fecha desde</label>
+                        <input type="date" class="form-control" id="fecha_desde" name="fecha_desde" required>
                     </div>
                     <div class="form-group">
-                        <label>Provincia</label>
-                        <select class="form-control m-bot15" name="provincia" required>
-                            {slt_provincia}
-                        </select>
+                        <label>Fecha hasta</label>
+                        <input type="date" class="form-control" id="fecha_hasta" name="fecha_hasta" required>
                     </div>
                     <div class="col-lg-12" style="margin-top: 2%;" align="right">
-                        <input type="hidden" id="valor_agregado" name="valor_agregado" value="0" required>
-                        <button type="submit" class="btn btn-app"> <i class="fa fa-save"></i> Agregar </button>
+                        <button type="submit" class="btn btn-app"> <i class="fa fa-download"></i> Descargar </button>
                     </div>
                 </form>
             </div>            
