@@ -497,3 +497,29 @@ CREATE TABLE IF NOT EXISTS configuracionturnerooficina (
         REFERENCES configuracionturnero (configuracionturnero_id)
         ON DELETE CASCADE
 ) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS curriculum (
+    curriculum_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , apellido VARCHAR(250)
+    , nombre VARCHAR(250)
+    , localidad VARCHAR(250)
+    , direccion VARCHAR(250)
+    , correo VARCHAR(250)
+    , telefono BIGINT(15)
+    , estudio VARCHAR(250)
+    , titulo VARCHAR(250)
+    , estadocivil VARCHAR(250)
+    , mensaje VARCHAR(250)
+    , fecha_carga DATE
+    , areainteres INT(11)
+    , INDEX (areainteres)
+    , FOREIGN KEY (areainteres)
+        REFERENCES areainteres (areainteres_id)
+        ON DELETE CASCADE
+    , provincia INT(11)
+    , INDEX (provincia)
+    , FOREIGN KEY (provincia)
+        REFERENCES provincia (provincia_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;        
