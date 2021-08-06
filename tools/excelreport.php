@@ -29,7 +29,7 @@ class ExcelReport extends View {
     $cantidadColumnas = $cantidadColumnas - 1;
     $ultimaLetraPosicion = "";
     $this->estilo();
-
+    print_r($array);exit;
     foreach ($this->abecedario as $clave=>$valor) {
       if ($clave <= $cantidadColumnas) {
         $objPHPExcel->setActiveSheetIndex(0)
@@ -77,9 +77,7 @@ class ExcelReport extends View {
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="informes_sgt.xlsx"');
     header('Cache-Control: max-age=0');
-    //print_r($array);exit;
 
-    //print_r($objPHPExcel);exit;
     $objWriter = PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
     $objWriter->save('php://output');
