@@ -522,4 +522,11 @@ CREATE TABLE IF NOT EXISTS curriculum (
     , FOREIGN KEY (provincia)
         REFERENCES provincia (provincia_id)
         ON DELETE CASCADE
-) ENGINE=InnoDb;        
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS tarjetacredito (
+    tarjetacredito_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , denominacion VARCHAR(250)
+) ENGINE=InnoDb;
+
