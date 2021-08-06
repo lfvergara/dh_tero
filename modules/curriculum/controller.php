@@ -13,6 +13,7 @@ class CurriculumController {
 	function panel() {
     	SessionHandler()->check_session();
 		$curriculum_collection = Collector()->get('Curriculum');
+		print_r($curriculum_collection);exit;
 		$this->view->panel($curriculum_collection);
 	}
 }
