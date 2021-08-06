@@ -29,7 +29,6 @@ class ExcelReport extends View {
     $cantidadColumnas = $cantidadColumnas - 1;
     $ultimaLetraPosicion = "";
     $this->estilo();
-    print_r($array);exit;
     foreach ($this->abecedario as $clave=>$valor) {
       if ($clave <= $cantidadColumnas) {
         $objPHPExcel->setActiveSheetIndex(0)
@@ -62,6 +61,7 @@ class ExcelReport extends View {
     $objPHPExcel->getActiveSheet()->getRowDimension(1)->setRowHeight(50);
     $objPHPExcel->getActiveSheet()->getRowDimension(2)->setRowHeight(30);
 
+    print_r($array);exit;
     foreach ($this->abecedario as $clave=>$valor) {
       if ($clave <= $cantidadColumnas) {
         $objPHPExcel->getActiveSheet()->getColumnDimensionByColumn("{$clave}")->setAutoSize(true);
