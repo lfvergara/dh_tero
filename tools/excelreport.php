@@ -73,11 +73,11 @@ class ExcelReport extends View {
     $objPHPExcel->setActiveSheetIndex(0);
     $objPHPExcel->getActiveSheet(0)->freezePaneByColumnAndRow(0,4);
 
-    print_r($array);exit;
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="informes_sgt.xlsx"');
     header('Cache-Control: max-age=0');
 
+    print_r($array);exit;
     $objWriter = PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
     $objWriter->save('php://output');
