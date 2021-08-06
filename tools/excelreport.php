@@ -80,7 +80,6 @@ class ExcelReport extends View {
     $objWriter = PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
     $objWriter->save('php://output');
-    print_r($array);exit;
   }
 
   /* ESTILO DE EXCEL */
