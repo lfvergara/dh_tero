@@ -102,7 +102,7 @@ class ExcelReport extends View {
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="iinformeCV.xlsx"');
     header('Cache-Control: max-age=0');
-
+    print_r($array_exportacion);exit;
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
     file_put_contents('depuracion.txt', ob_get_contents());
     ob_end_clean();
