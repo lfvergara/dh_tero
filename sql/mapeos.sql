@@ -573,3 +573,31 @@ CREATE TABLE IF NOT EXISTS gestioncomercialhistorico (
         REFERENCES estadogestioncomercial (estadogestioncomercial_id)
         ON DELETE CASCADE
 ) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS gestioncomercialhistoricogestioncomercial (
+    gestioncomercialhistoricogestioncomercial_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , compuesto INT(11)
+    , INDEX(compuesto)
+    , FOREIGN KEY (compuesto)
+        REFERENCES gestioncomercial (gestioncomercial_id)
+        ON DELETE CASCADE
+    , compositor INT(11)
+    , FOREIGN KEY (compositor)
+        REFERENCES gestioncomercialhistorico (gestioncomercialhistorico_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS archivogestioncomercial (
+    archivogestioncomercial_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , compuesto INT(11)
+    , INDEX(compuesto)
+    , FOREIGN KEY (compuesto)
+        REFERENCES gestioncomercial (gestioncomercial_id)
+        ON DELETE CASCADE
+    , compositor INT(11)
+    , FOREIGN KEY (compositor)
+        REFERENCES archivo (archivo_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
