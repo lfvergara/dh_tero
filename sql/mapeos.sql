@@ -530,3 +530,46 @@ CREATE TABLE IF NOT EXISTS tarjetacredito (
     , denominacion VARCHAR(250)
 ) ENGINE=InnoDb;
 
+CREATE TABLE IF NOT EXISTS tipogestioncomercial (
+    tipogestioncomercial_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , denominacion VARCHAR(200)
+    , cantidadarchivo INT(11)
+    , codigo TEXT
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS gestioncomercial (
+    gestioncomercial_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , suministro INT(7)
+    , fecha DATE
+    , dni INT(8)
+    , apellido VARCHAR(150)
+    , nombre VARCHAR(150)
+    , correoelectronico VARCHAR(150)
+    , telefono BIGINT(13)
+    , tipogestioncomercial INT(11)
+    , INDEX (tipogestioncomercial)
+    , FOREIGN KEY (tipogestioncomercial)
+        REFERENCES tipogestioncomercial (tipogestioncomercial_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS estadogestioncomercial (
+    estadogestioncomercial_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , denominacion VARCHAR(250)
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS gestioncomercialhistorico (
+    gestioncomercialhistorico_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , fecha DATE
+    , hora TIME
+    , detalle TEXT
+    , estadogestioncomercial INT(11)
+    , INDEX (estadogestioncomercial)
+    , FOREIGN KEY (estadogestioncomercial)
+        REFERENCES estadogestioncomercial (estadogestioncomercial_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
