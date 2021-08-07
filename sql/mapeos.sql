@@ -601,3 +601,40 @@ CREATE TABLE IF NOT EXISTS archivogestioncomercial (
         REFERENCES archivo (archivo_id)
         ON DELETE CASCADE
 ) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS detalletarjetadebito (
+    detalletarjetadebito_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , institucion_financiera VARCHAR(250)
+    , titular VARCHAR(250)
+    , cbu VARCHAR(250)
+    , numero_tarjeta BIGINT(20)
+    , fecha_vencimiento DATE
+    , tarjetacredito INT(11)
+    , INDEX (tarjetacredito)
+    , FOREIGN KEY (tarjetacredito)
+        REFERENCES tarjetacredito (tarjetacredito_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS detalleadhesiondebito (
+    detalleadhesiondebito_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , numero_tramite INT(11)
+    , metodo_envio INT(1)
+    , termino_condiciones INT(11)
+    , fecha_termino_condiciones DATE
+    , ip VARCHAR(20)
+    , so VARCHAR(20)
+    , detalle TEXT
+    , gestioncomercial INT(11)
+    , INDEX (gestioncomercial)
+    , FOREIGN KEY (gestioncomercial)
+        REFERENCES gestioncomercial (gestioncomercial_id)
+        ON DELETE CASCADE
+    , detalletarjetadebito INT(11)
+    , INDEX (detalletarjetadebito)
+    , FOREIGN KEY (detalletarjetadebito)
+        REFERENCES detalletarjetadebito (detalletarjetadebito_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
