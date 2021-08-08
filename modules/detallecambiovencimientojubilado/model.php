@@ -12,7 +12,6 @@ class DetalleCambioVencimientoJubilado extends StandardObject {
 		$this->fecha_termino_condiciones = '';
 		$this->ip = '';
 		$this->so = '';
-		$this->tipo = '';
 		$this->detalle = '';
 		$this->gestioncomercial = $gestioncomercial;
 	}
