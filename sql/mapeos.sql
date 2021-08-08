@@ -656,3 +656,20 @@ CREATE TABLE IF NOT EXISTS detalleadhesionfacturadigital (
         ON DELETE CASCADE
 ) ENGINE=InnoDb;
 
+CREATE TABLE IF NOT EXISTS detallecambiovencimientojubilado (
+    detallecambiovencimientojubilado_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , numero_tramite INT(11)
+    , dia_vencimiento INT(2)
+    , termino_condiciones INT(11)
+    , fecha_termino_condiciones DATE
+    , ip VARCHAR(20)
+    , so VARCHAR(20)
+    , tipo VARCHAR(4)
+    , detalle TEXT
+    , gestioncomercial INT(11)
+    , INDEX (gestioncomercial)
+    , FOREIGN KEY (gestioncomercial)
+        REFERENCES gestioncomercial (gestioncomercial_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDb;
