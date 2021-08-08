@@ -15,6 +15,7 @@ class DetalleNuevoSuministroReconexion extends StandardObject {
 		$this->tipo = '';
 		$this->tipo_titularidad = '';
 		$this->tipo_persona = '';
+		$this->tiempo_baja = 0;
 		$this->detalle = '';
 		$this->gestioncomercial = $gestioncomercial;
 	}
