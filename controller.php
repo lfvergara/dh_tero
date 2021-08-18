@@ -25,7 +25,7 @@ require_once 'core/helpers/emailHelper.php';
 
 $peticion = $_SERVER['REQUEST_URI'];
 if (SO_UNIX == true) {
-	@list($dominio, $app, $modulo, $recurso, $argumento) = explode('/', $peticion);
+	@list($app, $modulo, $recurso, $argumento) = explode('/', $peticion);
 } else {
 	@list($null, $app, $modulo, $recurso, $argumento) = explode('/', $peticion);
 }
