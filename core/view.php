@@ -15,10 +15,11 @@ abstract class View {
     function render_template($contenido) {
         $user_level = $_SESSION["data-login-" . APP_ABREV]["usuario-nivel"];
         $user_id = $_SESSION["data-login-" . APP_ABREV]["usuario-usuario_id"];
+        
         $configuracionmenu = $_SESSION["data-login-" . APP_ABREV]["usuario-configuracionmenu"];
+        $sidebar = $this->render_menu($configuracionmenu);
         
         $display_operador = ($user_level == 1) ? 'none' : 'block';
-        $sidebar = $this->render_menu($configuracionmenu);
         $sidebar = str_replace('{display_operador}', $display_operador, $sidebar);
 
         $dict = array("{app_nombre}"=>APP_TITTLE,
