@@ -107,10 +107,11 @@ abstract class View {
             $submenu_collection = $dict_menu->submenu_collection;
             unset($dict_menu->submenu_collection);
             $icon_plus_menu = ($dict_menu->cantidad_submenu > 1) ? "<span class='fa fa-chevron-down'></span>" : "";
+            $flag_cant_submenu = ($dict_menu->cantidad_submenu > 1) ? 1 : 0;
             
             $dict_menu = $this->set_dict($dict_menu);
             $btn_menu = $this->render($dict_menu, $cod_btn_menu);
-            if ($dict_menu["{menu-cantidad_submenu}"] > 1) {
+            if ($flag_cant_submenu == 1) {
                 $submenu_sidebar = file_get_contents("static/submenu_sidebar.html");
                 $li_sidebar = file_get_contents("static/li_submenu.html");
                 $cod_btn_submenu = $this->get_regex('BTN_SUBMENU', $li_sidebar);
