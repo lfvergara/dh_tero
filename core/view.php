@@ -50,7 +50,7 @@ abstract class View {
         $submenu_collection = $obj_configuracionmenu->submenu_collection;
         $item_collection = $obj_configuracionmenu->item_collection;
         unset($obj_configuracionmenu->item_collection, $obj_configuracionmenu->submenu_collection);
-        
+       
         foreach ($submenu_collection as $clave=>$valor) {
             $submenu_id = $valor->submenu_id;
             $submenu_collection[$clave]->clavelin = "sm_{$submenu_id}";
@@ -89,54 +89,61 @@ abstract class View {
             }
         }
 
-        foreach ($menu_collection_temp as $menu) {
-            $submenu_collection = $menu->submenu_collection;
+        foreach ($menu_collection_temp as $c=>$v) {
+            $submenu_collection = $v->submenu_collection;
+            $cantidad_submenu = count($submenu_collection);
             foreach ($submenu_collection as $clave=>$valor) {
                 $item_collection = $valor->item_collection;
                 $submenu_collection[$clave]->css_class = (empty($item_collection)) ? "" : "sub-menu";    
             }
+
+            $menu_collection_temp[$c]->cantidad_submenu = $cantidad_submenu;
         }
 
-        $configuracionmenu_id = $_SESSION["data-login-" . APP_ABREV]["usuario-configuracionmenu"];
-        switch ($configuracionmenu_id) {
-            case 5:
-                $sidebar = file_get_contents("static/vdr_sidebar.html");
-                break;                    
-            default:
-                $sidebar = file_get_contents("static/sidebar.html");
-                break;
-        }
-
+        $sidebar = file_get_contents("static/sidebar.html");
         $render_menu = '';
         $cod_btn_menu = $this->get_regex('BTN_MENU', $sidebar);
         foreach ($menu_collection_temp as $dict_menu) {
             $submenu_collection = $dict_menu->submenu_collection;
             unset($dict_menu->submenu_collection);
-            $icon_plus_menu = (!empty($submenu_collection)) ? "<span class='fa fa-chevron-down'></span>" : "";
+            $icon_plus_menu = ($dict_menu->cantidad_submenu > 1) ? "<span class='fa fa-chevron-down'></span>" : "";
+            
             $dict_menu = $this->set_dict($dict_menu);
             $btn_menu = $this->render($dict_menu, $cod_btn_menu);
+            if ($dict_menu["{menu-cantidad_submenu}"] > 1) {
+                $submenu_sidebar = file_get_contents("static/submenu_sidebar.html");
+                $li_sidebar = file_get_contents("static/li_submenu.html");
+                $cod_btn_submenu = $this->get_regex('BTN_SUBMENU', $li_sidebar);
+                $render_submenu = '';
+                foreach($submenu_collection as $dict) {
+                    $item_collection = $dict->item_collection;
+                    unset($dict->item_collection);
+                    $icon_plus_icon = (!empty($item_collection)) ? "<span class='fa fa-chevron-down'></span>" : "";
+                    $dict = $this->set_dict($dict);
+                    $btn_submenu = $this->render($dict, $cod_btn_submenu);
+                    $cod_btn_item = $this->get_regex('BTN_ITEM', $btn_submenu);
+                    $render_item = '';
+                    $item_collection = $this->set_collection_dict($item_collection);
+                    foreach ($item_collection as $clave=>$valor) $render_item .= $this->render($valor, $cod_btn_item);
 
-            $cod_btn_submenu = $this->get_regex('BTN_SUBMENU', $cod_btn_menu);
-            $render_submenu = '';
-            foreach($submenu_collection as $dict) {
-                $item_collection = $dict->item_collection;
-                unset($dict->item_collection);
-                $icon_plus_icon = (!empty($item_collection)) ? "<span class='fa fa-chevron-down'></span>" : "";
-                $dict = $this->set_dict($dict);
-                $btn_submenu = $this->render($dict, $cod_btn_submenu);
-                $cod_btn_item = $this->get_regex('BTN_ITEM', $btn_submenu);
-                $render_item = '';
-                $item_collection = $this->set_collection_dict($item_collection);
-                foreach ($item_collection as $clave=>$valor) $render_item .= $this->render($valor, $cod_btn_item);
+                    $btn_submenu = str_replace($cod_btn_item, $render_item, $btn_submenu);
+                    $btn_submenu = str_replace("{icon-plus-expand}", $icon_plus_icon, $btn_submenu);
+                    $render_submenu .= $btn_submenu;
+                }
 
-                $btn_submenu = str_replace($cod_btn_item, $render_item, $btn_submenu);
-                $btn_submenu = str_replace("{icon-plus-expand}", $icon_plus_icon, $btn_submenu);
-                $render_submenu .= $btn_submenu;
+                $submenu_sidebar = str_replace("{li-sidebar}", $render_submenu, $submenu_sidebar);
+                $btn_menu = str_replace("{href-submenu}", "", $btn_menu);
+                $btn_menu = str_replace("{submenu-sidebar}", $submenu_sidebar, $btn_menu);
+                $btn_menu = str_replace("{icon-plus-expand-menu}", $icon_plus_menu, $btn_menu);
+                $render_menu .= $btn_menu;
+            } else {
+                $href = "href='" . URL_APP . $dict_menu["{menu-url}"] . "'";
+                $btn_menu = str_replace("{href-submenu}", $href, $btn_menu);
+                $btn_menu = str_replace("{submenu-sidebar}", "", $btn_menu);
+                $btn_menu = str_replace("{icon-plus-expand-menu}", $icon_plus_menu, $btn_menu);
+                $render_menu .= $btn_menu;
             }
 
-            $btn_menu = str_replace($cod_btn_submenu, $render_submenu, $btn_menu);
-            $btn_menu = str_replace("{icon-plus-expand-menu}", $icon_plus_menu, $btn_menu);
-            $render_menu .= $btn_menu;
         }
 
         $sidebar = str_replace($cod_btn_menu, $render_menu, $sidebar);
