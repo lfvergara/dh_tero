@@ -709,3 +709,10 @@ CREATE TABLE IF NOT EXISTS detallenuevosuministroreconexion (
         REFERENCES gestioncomercial (gestioncomercial_id)
         ON DELETE CASCADE
 ) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS banner (
+    banner_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , posicion VARCHAR(100)
+    , activo INT(1)
+) ENGINE=InnoDb;
