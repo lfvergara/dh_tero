@@ -55,5 +55,12 @@ class CurriculumController {
 		 
 		ExcelReport()->extraer_informe_conjunto($titulo,$array_exportacion);
 	}
+
+	/* COMMON **************************************************************/
+	function ver_archivo(){
+		SessionHandler()->check_session();
+		require_once "core/helpers/appfiles.php";
+	}
+	/* COMMON **************************************************************/
 }
 ?>
