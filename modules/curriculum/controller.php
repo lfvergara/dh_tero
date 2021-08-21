@@ -1,6 +1,7 @@
 <?php
 require_once "modules/curriculum/model.php";
 require_once "modules/curriculum/view.php";
+require_once "core/helpers/appfiles.php";
 
 
 class CurriculumController {
