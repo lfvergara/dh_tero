@@ -14,7 +14,7 @@ class BannerView extends View {
 	}
 
 	function editar($obj_banner) {
-		$gui = file_get_contents("static/modules/rse/editar.html");
+		$gui = file_get_contents("static/modules/banner/editar.html");
 		$gui_tbl_banner = file_get_contents("static/modules/banner/tbl_banner.html");
 		$gui_tbl_banner = $this->render_regex_dict('TBL_BANNER', $gui_tbl_banner, $banner_collection);
 		$obj_banner = $this->set_dict($obj_banner);
@@ -26,7 +26,7 @@ class BannerView extends View {
 	}
 
 	function consultar($obj_banner) {
-		$gui = file_get_contents("static/modules/rse/consultar.html");		
+		$gui = file_get_contents("static/modules/banner/consultar.html");		
 		$obj_banner = $this->set_dict($obj_banner);
 		$render = $this->render($obj_banner, $gui);
 		$render = $this->render_breadcrumb($render);

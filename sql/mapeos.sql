@@ -713,6 +713,7 @@ CREATE TABLE IF NOT EXISTS detallenuevosuministroreconexion (
 CREATE TABLE IF NOT EXISTS banner (
     banner_id INT(11) NOT NULL 
         AUTO_INCREMENT PRIMARY KEY
+    , detalle VARCHAR(150)
     , posicion VARCHAR(100)
     , activo INT(1)
 ) ENGINE=InnoDb;
