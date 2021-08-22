@@ -13,7 +13,7 @@ class BannerView extends View {
 		print $template;
 	}
 
-	function editar($obj_banner) {
+	function editar($banner_collection, $obj_banner) {
 		$gui = file_get_contents("static/modules/banner/editar.html");
 		$gui_tbl_banner = file_get_contents("static/modules/banner/tbl_banner.html");
 		$gui_tbl_banner = $this->render_regex('TBL_BANNER', $gui_tbl_banner, $banner_collection);
