@@ -73,6 +73,7 @@ class BannerController {
 		$banner_id = filter_input(INPUT_POST, 'banner_id');
 		$this->model->banner_id = $banner_id;
 		$this->model->get();
+		$this->model->detalle = filter_input(INPUT_POST, 'detalle');
 		$this->model->posicion = filter_input(INPUT_POST, 'posicion');
 		$this->model->save();
 		header("Location: " . URL_APP . "/banner/consultar/{$banner_id}");
