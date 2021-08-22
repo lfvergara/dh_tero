@@ -31,7 +31,17 @@ class BannerController {
 		$banner_id = $arg;
 		$this->model->banner_id = $banner_id;
 		$this->model->get();
+		
     	$banner_collection = Collector()->get('Banner');
+    	foreach ($banner_collection as $clave=>$valor) {
+    		$banner_collection[$clave]->estado_icon = ($valor->activo == 0) ? 'close' : 'check';
+    		$banner_collection[$clave]->estado_class = ($valor->activo == 0) ? 'danger' : 'success';
+    		$banner_collection[$clave]->estado_title = ($valor->activo == 0) ? 'Inactivo' : 'Activo';
+    		$banner_collection[$clave]->btn_estado_title = ($valor->activo == 0) ? '¿Activar?' : '¿Desactivar?';
+    		$banner_collection[$clave]->btn_estado_icon = ($valor->activo == 0) ? 'arrow-circle-o-up' : 'arrow-circle-o-down';
+    		$banner_collection[$clave]->btn_estado_class = ($valor->activo == 0) ? 'success' : 'danger';
+    	}
+
 		$this->view->editar($banner_collection, $this->model);
 	}
 
