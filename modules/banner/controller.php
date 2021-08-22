@@ -31,7 +31,7 @@ class BannerController {
 		$banner_id = $arg;
 		$this->model->banner_id = $banner_id;
 		$this->model->get();
-		
+
     	$banner_collection = Collector()->get('Banner');
     	foreach ($banner_collection as $clave=>$valor) {
     		$banner_collection[$clave]->estado_icon = ($valor->activo == 0) ? 'close' : 'check';
@@ -123,7 +123,7 @@ class BannerController {
 			}
 		}
 
-		header("Location: " . URL_APP . "/banner/consultar/{$banner_id}");
+		header("Location: " . URL_APP . "/banner/editar/{$banner_id}");
 	}
 
 	function eliminar($arg) {
