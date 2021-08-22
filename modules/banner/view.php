@@ -24,14 +24,5 @@ class BannerView extends View {
 		$template = $this->render_template($render);
 		print $template;	
 	}
-
-	function consultar($obj_banner) {
-		$gui = file_get_contents("static/modules/banner/consultar.html");		
-		$obj_banner = $this->set_dict($obj_banner);
-		$render = $this->render($obj_banner, $gui);
-		$render = $this->render_breadcrumb($render);
-		$template = $this->render_template($render);
-		print $template;	
-	}
 }
 ?>

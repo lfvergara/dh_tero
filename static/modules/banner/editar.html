@@ -5,13 +5,13 @@
 <div class="col-lg-12">
     <ul class="breadcrumb">
         <li><a href="{url_app}/panol/panel"><i class="fa fa-home"></i> HOME</a></li>
-        <li><a href="{url_app}/{objeto}/{panel_objeto}">Panel Localidad</a></li>
+        <li><a href="{url_app}/{objeto}/{panel_objeto}">Panel Banner</a></li>
     </ul>
 </div>
 <div class="col-md-4 col-sm-4 col-xs-4">
     <div class="x_panel">
         <div class="x_title">
-            <h2><i class="fa fa-edit"></i>&nbsp;&nbsp; Editar localidad</h2>
+            <h2><i class="fa fa-edit"></i>&nbsp;&nbsp; Editar banner</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 <li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -20,21 +20,43 @@
         </div>
         <div class="x_content">
             <div class=" form">
-                <form class="form" id="formulario_guardar" method="post" action="{url_app}/localidad/guardar">
+                <form class="form" id="formulario_guardar" method="post" action="{url_app}/banner/guardar">
                     <div class="form-group">
-                        <label>Localidad</label>
-                        <input type="text" class="form-control" id="denominacion" name="denominacion" value="{localidad-denominacion}" required>
+                        <label>Detalle</label>
+                        <input type="text" class="form-control" id="detalle" name="detalle" value="{banner-detalle}" required>
                     </div>
                     <div class="form-group">
-                        <label>Provincia</label>
-                        <select class="form-control m-bot15" name="provincia" required>
-                            <option value="{provincia-provincia_id}" selected>{provincia-denominacion}</option>
-                            {slt_provincia}
+                        <label>Posición</label>
+                        <select class="form-control m-bot15" name="posicion" required>
+                            <option value="{banner-posicion}" selected>{banner-posicion}</option>
                         </select>
                     </div>
                     <div class="col-lg-12" style="margin-top: 2%;" align="right">
-                        <input type="hidden" id="valor_agregado" name="valor_agregado" value="0" required>
-                        <input type="hidden" name="localidad_id" id="localidad_id" value="{localidad-localidad_id}">
+                        <input type="hidden" name="banner_id" id="banner_id" value="{banner-banner_id}">
+                        <button type="submit" class="btn btn-app"><i class="fa fa-edit"></i> Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="x_panel">
+        <div class="x_title">
+            <h2><i class="fa fa-picture-o"></i>&nbsp;&nbsp; Imagen</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class=" form">
+                <form class="form" id="formulario_guardar" method="post" action="{url_app}/banner/guardar_imagen" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Archivo</label>
+                        <input type="file" class="form-control" id="archivo" name="archivo" required>
+                    </div>
+                    <div class="col-lg-12" style="margin-top: 2%;" align="right">
+                        <input type="hidden" name="banner_id" id="banner_id" value="{banner-banner_id}">
                         <button type="submit" class="btn btn-app"><i class="fa fa-edit"></i> Editar</button>
                     </div>
                 </form>
@@ -45,7 +67,7 @@
 <div class="col-md-8 col-sm-8 col-xs-8">
     <div class="x_panel">
         <div class="x_title">
-            <h2><i class="fa fa-table"></i>&nbsp;&nbsp; Listado de localidades</h2>
+            <h2><i class="fa fa-table"></i>&nbsp;&nbsp; Listado de banners</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 <li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -53,26 +75,16 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <table id="tbl_localidad" class="table table-striped table-bordered">
+            <table id="tbl_banner" class="table table-striped table-bordered">
                 <thead>
                     <tr style="font-size: 12px;">
-                        <th>Provincia</th>
-                        <th>Localidad</th>
+                        <th>Posición</th>
+                        <th>Detalle</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!--TBL_LOCALIDAD-->
-                    <tr style="font-size: 12px;">
-                        <td>{provincia-denominacion}</td>
-                        <td>{localidad-denominacion}</td>
-                        <td>
-                            <center>
-                                <button class="btn btn-warning btn-xs" onclick="confirma_formulario(3, '{url_app}/localidad/editar/{localidad-localidad_id}');" title="Editar localidad"><i class="fa fa-edit"></i></button>
-                            </center>
-                        </td>
-                    </tr>
-                    <!--TBL_LOCALIDAD-->
+                    {tbl_banner}
                 </tbody>
             </table>
         </div>
@@ -85,7 +97,7 @@
 <script src="{url_static}vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        $('#tbl_localidad').dataTable( {
+        $('#tbl_banner').dataTable( {
             "aaSorting": [[ 0, "asc" ]]
           , "iDisplayLength":10
         } );

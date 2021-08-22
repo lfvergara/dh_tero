@@ -35,14 +35,6 @@ class BannerController {
 		$this->view->editar($banner_collection, $this->model);
 	}
 
-	function consultar($arg) {
-		SessionHandler()->check_session();	
-		$banner_id = $arg;
-		$this->model->banner_id = $banner_id;
-		$this->model->get();
-		$this->view->consultar($this->model);
-	}
-
 	function guardar() {
 		SessionHandler()->check_session();
 		
@@ -123,14 +115,17 @@ class BannerController {
 		header("Location: " . URL_APP . "/banner/consultar/{$banner_id}");
 	}
 
-	function eliminar_archivo($arg) {
-		SessionHandler()->check_session();
-		$banner_id = $ids[0];
+	function eliminar($arg) {
+		SessionHandler()->check_session();		
+		$banner_id = $arg;
+		$this->model->banner_id = $banner_id;
+		$this->model->delete();
+
 		$archivo = URL_PRIVATE . "banner/{$banner_id}";
 		chmod($archivo, 0777);
 		unlink($archivo);
 
-		header("Location: " . URL_APP . "/banner/editar/{$banner_id}");
+		header("Location: " . URL_APP . "/banner/panel");
 	}
 
 	function ver_archivo(){
