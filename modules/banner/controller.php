@@ -76,7 +76,7 @@ class BannerController {
 		$this->model->detalle = filter_input(INPUT_POST, 'detalle');
 		$this->model->posicion = filter_input(INPUT_POST, 'posicion');
 		$this->model->save();
-		header("Location: " . URL_APP . "/banner/consultar/{$banner_id}");
+		header("Location: " . URL_APP . "/banner/editar/{$banner_id}");
 	}
 
 	function cambiar_estado($arg) {
