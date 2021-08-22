@@ -36,10 +36,34 @@ class BannerController {
 
 	function guardar() {
 		SessionHandler()->check_session();
-		$this->model->posicion = filter_input(INPUT_POST, 'posicion');
+		
+		$detalle = filter_input(INPUT_POST, 'detalle');
+		$posicion = filter_input(INPUT_POST, 'posicion');
+
+		$this->model->detalle = $detalle;
+		$this->model->posicion = $posicion;
 		$this->model->activo = 1;
 		$this->model->save();
 		$banner_id = $this->model->banner_id;
+
+		$directorio = URL_PRIVATE . "banner/";
+		$archivo = $_FILES["archivo"]["tmp_name"];
+		$finfo = new finfo(FILEINFO_MIME_TYPE);
+		$mime = $finfo->file($archivo);
+		$formato = explode("/", $mime);
+
+		$mimes_permitidos = array("image/png", "image/jpg", "image/jpeg");
+		$name = $banner_id;
+		if(in_array($mime, $mimes_permitidos)) {
+			if(!file_exists($directorio)) {
+				mkdir($directorio);
+				chmod($directorio, 0777);
+				move_uploaded_file($archivo, "{$directorio}/{$name}");
+			} else {
+				move_uploaded_file($archivo, "{$directorio}/{$name}");
+			}
+		}
+
 		header("Location: " . URL_APP . "/banner/panel");
 	}
 
