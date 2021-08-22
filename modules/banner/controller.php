@@ -103,8 +103,6 @@ class BannerController {
 	function guardar_archivo() {
 		SessionHandler()->check_session();
 		$banner_id = filter_input(INPUT_POST, "banner_id");
-		$denominacion = filter_input(INPUT_POST, "denominacion");
-		
 		$directorio = URL_PRIVATE . "banner/";
 		$archivo = $_FILES["archivo"]["tmp_name"];
 		$finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -141,7 +139,7 @@ class BannerController {
 
 	function ver_archivo(){
 		SessionHandler()->check_session();
-		require_once "core/helpers/files.php";
+		require_once "core/helpers/file.php";
 	}
 }
 ?>
