@@ -13,6 +13,15 @@ class BannerController {
 	function panel() {
     	SessionHandler()->check_session();
     	$banner_collection = Collector()->get('Banner');
+    	foreach ($banner_collection as $clave=>$valor) {
+    		$banner_collection[$clave]->estado_icon = ($valor->activo == 0) ? 'close' : 'check';
+    		$banner_collection[$clave]->estado_class = ($valor->activo == 0) ? 'danger' : 'success';
+    		$banner_collection[$clave]->estado_title = ($valor->activo == 0) ? 'Inactivo' : 'Activo';
+    		$banner_collection[$clave]->btn_estado_title = ($valor->activo == 0) ? '¿Activar?' : '¿Desactivar?';
+    		$banner_collection[$clave]->btn_estado_icon = ($valor->activo == 0) ? 'arrow-up' : 'arrow-down';
+    		$banner_collection[$clave]->btn_estado_class = ($valor->activo == 0) ? 'success' : 'danger';
+    	}
+
 		$this->view->panel($banner_collection);
 	}
 
