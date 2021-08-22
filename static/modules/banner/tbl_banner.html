@@ -1,8 +1,10 @@
 <!--TBL_BANNER-->
 <tr style="font-size: 12px;">
+    <td>
+        <button class="btn btn-{banner-estado_class} btn-xs" title="{banner-estado_title}"><i class="fa fa-{banner-estado_icon}"></i></button>
+    </td>
     <td>{banner-posicion}</td>
     <td>{banner-detalle}</td>
-    <td>{banner-estado}</td>
     <td>
         <center>
             <button class="btn btn-{banner-btn_estado_class} btn-xs" onclick="confirma_formulario(3, '{url_app}/banner/cambiar_estado/{banner-banner_id}');" title="{banner-btn_estado_title}"><i class="fa fa-{banner-btn_estado_icon}"></i></button>
