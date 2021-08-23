@@ -1,0 +1,15 @@
+<!--TBL_CUADROTARIFARIO-->
+<tr style="font-size: 12px;">
+    <td>
+        <button class="btn btn-{cuadrotarifario-estado_class} btn-xs" title="{cuadrotarifario-estado_title}"><i class="fa fa-{cuadrotarifario-estado_icon}"></i></button>
+        {cuadrotarifario-posicion}
+    </td>
+    <td>{cuadrotarifario-detalle}</td>
+    <td>
+        <center>
+            <button class="btn btn-{cuadrotarifario-btn_estado_class} btn-xs" onclick="confirma_formulario(3, '{url_app}/cuadrotarifario/cambiar_estado/{cuadrotarifario-cuadrotarifario_id}');" title="{cuadrotarifario-btn_estado_title}"><i class="fa fa-{cuadrotarifario-btn_estado_icon}"></i></button>
+            <button class="btn btn-warning btn-xs" onclick="confirma_formulario(3, '{url_app}/cuadrotarifario/editar/{cuadrotarifario-cuadrotarifario_id}');" title="Editar cuadro tarifario"><i class="fa fa-edit"></i></button>
+        </center>
+    </td>
+</tr>
+<!--TBL_CUADROTARIFARIO-->
