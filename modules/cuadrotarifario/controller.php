@@ -53,7 +53,7 @@ class CuadroTarifarioController {
 
 		$this->model->detalle = $detalle;
 		$this->model->fecha_carga = $fecha_carga;
-		$this->model->activo = 1;
+		$this->model->activo = 0;
 		$this->model->save();
 		$cuadrotarifario_id = $this->model->cuadrotarifario_id;
 
