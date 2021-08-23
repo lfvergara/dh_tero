@@ -5,6 +5,7 @@ class CuadroTarifarioView extends View {
 	
 	function panel($cuadrotarifario_collection) {
 		$gui = file_get_contents("static/modules/cuadrotarifario/panel.html");
+		print_r($gui);exit;
 		$gui_tbl_cuadrotarifario = file_get_contents("static/modules/cuadrotarifario/tbl_cuadrotarifario.html");
 		$gui_tbl_cuadrotarifario = $this->render_regex('TBL_CUADROTARIFARIO', $gui_tbl_cuadrotarifario, $cuadrotarifario_collection);
 		$render = str_replace('{tbl_cuadrotarifario}', $gui_tbl_cuadrotarifario, $gui);
