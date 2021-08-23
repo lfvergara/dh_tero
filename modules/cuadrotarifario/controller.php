@@ -49,10 +49,10 @@ class CuadroTarifarioController {
 		SessionHandler()->check_session();
 		
 		$detalle = filter_input(INPUT_POST, 'detalle');
-		$posicion = filter_input(INPUT_POST, 'posicion');
+		$fecha_carga = date('Y-m-d');
 
 		$this->model->detalle = $detalle;
-		$this->model->posicion = $posicion;
+		$this->model->fecha_carga = $fecha_carga;
 		$this->model->activo = 1;
 		$this->model->save();
 		$cuadrotarifario_id = $this->model->cuadrotarifario_id;
@@ -84,7 +84,7 @@ class CuadroTarifarioController {
 		$this->model->cuadrotarifario_id = $cuadrotarifario_id;
 		$this->model->get();
 		$this->model->detalle = filter_input(INPUT_POST, 'detalle');
-		$this->model->posicion = filter_input(INPUT_POST, 'posicion');
+		$this->model->fecha_carga = date('Y-m-d');
 		$this->model->save();
 		header("Location: " . URL_APP . "/cuadrotarifario/editar/{$cuadrotarifario_id}");
 	}
