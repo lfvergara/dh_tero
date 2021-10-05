@@ -725,3 +725,19 @@ CREATE TABLE IF NOT EXISTS cuadrotarifario (
     , fecha_carga DATE
     , activo INT(1)
 ) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS cuadrotarifario (
+    cuadrotarifario_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , detalle VARCHAR(150)
+    , fecha_carga DATE
+    , activo INT(1)
+) ENGINE=InnoDb;
+
+CREATE TABLE IF NOT EXISTS configuracionturnerodni (
+    configuracionturnerodni_id INT(11) NOT NULL 
+        AUTO_INCREMENT PRIMARY KEY
+    , denominacion VARCHAR(100)
+    , dia INT(11)
+    , terminacion VARCHAR(30)
+) ENGINE=InnoDb;
