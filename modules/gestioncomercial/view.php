@@ -11,6 +11,7 @@ class GestionComercialView extends View {
 
 		$gui_tbl_cantidad_gestioncomercial = $this->render_regex_dict('TBL_GESTIONCOMERCIAL', $gui_tbl_cantidad_gestioncomercial, $cantidad_gestioncomercial);
 		$gui_lbl_piechart_gestioncomercial = $this->render_regex_dict('LBL_PIECHART_GESTIONCOMERCIAL', $gui_lbl_piechart_gestioncomercial, $cantidad_gestioncomercial);
+		print_r($gui_lbl_piechart_gestioncomercial);exit;
 		$gui_valores_piechart_gestioncomercial = $this->render_regex_dict('VALORES_PIECHART_GESTIONCOMERCIAL', $gui_valores_piechart_gestioncomercial, $cantidad_gestioncomercial);
 		$gui_lbl_piechart_gestioncomercial = str_replace('<!--LBL_PIECHART_GESTIONCOMERCIAL-->', '', $gui_lbl_piechart_gestioncomercial);
 		$gui_valores_piechart_gestioncomercial = str_replace('<!--VALORES_PIECHART_GESTIONCOMERCIAL-->', '', $gui_valores_piechart_gestioncomercial);
