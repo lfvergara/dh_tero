@@ -15,9 +15,9 @@ class GestionComercialController {
     	$mes = date('Y-m');
     	$fecha_sys = date('Y-m-d');
     	$select = "gc.tipogestioncomercial AS TIPGESCOMID, COUNT(gc.tipogestioncomercial) AS CANT";
-		print_r($select);exit;
     	//$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, tgc.denominacion AS GESTION, COUNT(gc.tipogestioncomercial) AS CANT";
     	$from = "gestioncomercial gc INNER JOIN tipogestioncomercial tgc ON gc.tipogestioncomercial = tgc.tipogestioncomercial_id";
+		print_r($from);exit;
     	//$where = "gc.fecha BETWEEN '{$mes}-01' AND '{$fecha_sys}'";
     	$where = "gc.fecha >= '2021-07-01'";
     	$group_by = "gc.tipogestioncomercial ORDER BY COUNT(gc.tipogestioncomercial) DESC";
