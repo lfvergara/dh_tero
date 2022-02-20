@@ -12,8 +12,13 @@ class GestionComercialController {
 
 	function panel() {
     	SessionHandler()->check_session();
-		$gestioncomercial_collection = Collector()->get('GestionComercial');
-		print_r($gestioncomercial_collection);exit;
+    	$mes = date('Y-m');
+    	$fecha_sys = date('Y-m-d');
+    	$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, tgc.denominacion AS GESTION, COUNT(gc.tipogestioncomercial) AS CANT";
+    	$from = "gestioncomercial gc INNER JOIN tipogestioncomercial tgc ON gc.tipogestioncomercial = tgc.tipogestioncomercial_id";
+    	$where = "gc.fecha BETWEEN '{$mes}-01' AND {$fecha_sys}";
+    	$cantidad_gestioncomercial = CollectorCondition('GestionComercial', $where, 4, $from, $select);
+		print_r($cantidad_gestioncomercial);exit;
 		$this->view->panel($gestioncomercial_collection);
 	}
 
