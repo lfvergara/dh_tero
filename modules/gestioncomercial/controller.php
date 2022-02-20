@@ -18,8 +18,8 @@ class GestionComercialController {
     	$from = "gestioncomercial gc INNER JOIN tipogestioncomercial tgc ON gc.tipogestioncomercial = tgc.tipogestioncomercial_id";
     	//$where = "gc.fecha BETWEEN '{$mes}-01' AND '{$fecha_sys}'";
     	$where = "gc.fecha BETWEEN '2021-01-01' AND '{$fecha_sys}'";    	
-    	$group_by = "gc.tipogestioncomercial";
-    	$cantidad_gestioncomercial = CollectorCondition('GestionComercial', $where, 4, $from, $select, $group_by);
+    	$group_by = "gc.tipogestioncomercial ORDER BY COUNT(gc.tipogestioncomercial) DESC";
+    	$cantidad_gestioncomercial = CollectorCondition()->get('GestionComercial', $where, 4, $from, $select, $group_by);
 		print_r($cantidad_gestioncomercial);exit;
 		$this->view->panel($gestioncomercial_collection);
 	}
