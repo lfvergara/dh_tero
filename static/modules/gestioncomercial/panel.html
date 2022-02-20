@@ -14,7 +14,9 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <div class="col-md-8 col-sm-12 col-xs-12"></div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <canvas id="charGestiones"></canvas>
+            </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <table id="tbl_stock" class="table table-striped table-bordered">
                     <thead>
@@ -32,6 +34,37 @@
         </div>
     </div>
 </div>
+<!-- Chart.js -->
+<script src="{url_static}vendors/Chart.js/dist/Chart.min.js"></script>
 <script type="text/javascript" charset="utf-8">
-    
+    if ($('#charGastos').length ) {
+        var ctx = document.getElementById("charGastos");
+        var data = {
+            labels: [{lbl_piechart_gestioncomercial}],
+            datasets: [{
+                data: [{valores_piechart_gestioncomercial}],
+                backgroundColor: [
+                    "#5E4EAE","#EFCB57","#F28C8F","#061E53",
+                    "#D14164","#5CB9D0","#DC5242","#499187",
+                    "#AD58B9","#798D8E","#FFC602","#0580BB",
+                    "#E74C3C","#96281B","#C8F7C5","#455C73",
+                    "#E87E04","#68C3A3","#9B59B6","#715548"
+
+                ],
+                hoverBackgroundColor: [
+                    "#3B23B3","#B39534","#C75053","#020E29",
+                    "#AB173B","#447582","#B72818","#2f615A",
+                    "#772184","#626C6D","#CCA008","#08618C",
+                    "#C63B2D","#821C12","#ACECA8","#34495E",
+                    "#F48401","#4CA486","#B370CF","#442F26"
+                ]
+            }]
+        };
+
+        var charGastos = new Chart(ctx, {
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data: data
+        });
+    }
 </script>

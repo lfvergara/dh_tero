@@ -6,9 +6,18 @@ class GestionComercialView extends View {
 	function panel($cantidad_gestioncomercial) {
 		$gui = file_get_contents("static/modules/gestioncomercial/panel.html");
 		$gui_tbl_cantidad_gestioncomercial = file_get_contents("static/modules/gestioncomercial/tbl_cantidad_gestioncomercial.html");
+		$gui_lbl_piechart_gestioncomercial = file_get_contents("static/modules/reporte/lbl_piechart_gestioncomercial.html");
+		$gui_valores_piechart_gestioncomercial = file_get_contents("static/modules/reporte/valores_piechart_gestioncomercial.html");
+
 		$gui_tbl_cantidad_gestioncomercial = $this->render_regex_dict('TBL_GESTIONCOMERCIAL', $gui_tbl_cantidad_gestioncomercial, $cantidad_gestioncomercial);
+		$gui_lbl_piechart_gestioncomercial = $this->render_regex_dict('LBL_PIECHART_GESTIONCOMERCIAL', $gui_lbl_piechart_gestioncomercial, $cantidad_gestioncomercial);
+		$gui_valores_piechart_gestioncomercial = $this->render_regex_dict('VALORES_PIECHART_GESTIONCOMERCIAL', $gui_valores_piechart_gestioncomercial, $cantidad_gestioncomercial);
+		$gui_lbl_piechart_gestioncomercial = str_replace('<!--LBL_PIECHART_GESTIONCOMERCIAL-->', '', $gui_lbl_piechart_gestioncomercial);
+		$gui_valores_piechart_gestioncomercial = str_replace('<!--VALORES_PIECHART_GESTIONCOMERCIAL-->', '', $gui_valores_piechart_gestioncomercial);
 
 		$render = str_replace('{tbl_cantidad_gestioncomercial}', $gui_tbl_cantidad_gestioncomercial, $gui);
+		$render = str_replace('{lbl_piechart_gestioncomercial}', $gui_lbl_piechart_gestioncomercial, $render);
+		$render = str_replace('{valores_piechart_gestioncomercial}', $gui_valores_piechart_gestioncomercial, $render);
 		$render = $this->render_breadcrumb($render);
 		$template = $this->render_template($render);
 		print $template;
