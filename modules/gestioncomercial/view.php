@@ -18,6 +18,7 @@ class GestionComercialView extends View {
 		$render = str_replace('{tbl_cantidad_gestioncomercial}', $gui_tbl_cantidad_gestioncomercial, $gui);
 		$render = str_replace('{lbl_piechart_gestioncomercial}', $gui_lbl_piechart_gestioncomercial, $render);
 		$render = str_replace('{valores_piechart_gestioncomercial}', $gui_valores_piechart_gestioncomercial, $render);
+		$render = str_replace('{periodo_actual}', date('Ym'), $render);
 		$render = $this->render_breadcrumb($render);
 		$template = $this->render_template($render);
 		print $template;
