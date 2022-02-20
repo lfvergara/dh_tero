@@ -7,7 +7,7 @@ class GestionComercialView extends View {
 		$gui = file_get_contents("static/modules/gestioncomercial/panel.html");
 		$gui_tbl_cantidad_gestioncomercial = file_get_contents("static/modules/gestioncomercial/tbl_cantidad_gestioncomercial.html");
 		$gui_tbl_cantidad_gestioncomercial = $this->render_regex_dict('TBL_GESTIONCOMERCIAL', $gui_tbl_cantidad_gestioncomercial, $gestioncomercial_collection);
-		print_r($cantidad_gestioncomercial);exit;
+		print_r($gui_tbl_cantidad_gestioncomercial);exit;
 
 		$render = str_replace('{tbl_cantidad_gestioncomercial}', $gui_tbl_cantidad_gestioncomercial, $gui);
 		$render = $this->render_breadcrumb($render);
