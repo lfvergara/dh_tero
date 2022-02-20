@@ -37,8 +37,8 @@
 <!-- Chart.js -->
 <script src="{url_static}vendors/Chart.js/dist/Chart.min.js"></script>
 <script type="text/javascript" charset="utf-8">
-    if ($('#charGastos').length ) {
-        var ctx = document.getElementById("charGastos");
+    if ($('#charGestiones').length ) {
+        var ctx = document.getElementById("charGestiones");
         var data = {
             labels: [{lbl_piechart_gestioncomercial}],
             datasets: [{
@@ -61,7 +61,7 @@
             }]
         };
 
-        var charGastos = new Chart(ctx, {
+        var charGestiones = new Chart(ctx, {
             type: 'doughnut',
             tooltipFillColor: "rgba(51, 51, 51, 0.55)",
             data: data
