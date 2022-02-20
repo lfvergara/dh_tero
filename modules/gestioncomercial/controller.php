@@ -14,7 +14,7 @@ class GestionComercialController {
     	SessionHandler()->check_session();
     	$mes = date('Y-m');
     	$fecha_sys = date('Y-m-d');
-    	$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, COUNT(gc.tipogestioncomercial) AS CANT";
+    	$select = "gc.tipogestioncomercial AS TIPGESCOMID, COUNT(gc.tipogestioncomercial) AS CANT";
 		print_r($select);exit;
     	//$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, tgc.denominacion AS GESTION, COUNT(gc.tipogestioncomercial) AS CANT";
     	$from = "gestioncomercial gc INNER JOIN tipogestioncomercial tgc ON gc.tipogestioncomercial = tgc.tipogestioncomercial_id";
