@@ -41,8 +41,8 @@ class TramiteController {
 		SessionHandler()->check_session();
 		$this->model->denominacion = filter_input(INPUT_POST, 'denominacion');
 		$this->model->nomenclatura = filter_input(INPUT_POST, 'nomenclatura');
-		$this->model->online = filter_input(INPUT_POST, 'online');
-		$this->model->requisito = filter_input(INPUT_POST, 'descr');
+		$this->model->online = 0;
+		$this->model->requisito = '';
 		$this->model->save();
 		header("Location: " . URL_APP . "/tramite/panel");
 	}
