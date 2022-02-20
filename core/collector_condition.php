@@ -50,7 +50,7 @@ class CollectorCondition {
                 break;
         }
 
-        //print_r($sql);exit;
+        print_r($sql);exit;
         $resultados = execute_query($sql);
         if ($type == 1 || $type == 3 || $type == 4) {
             return $resultados;
