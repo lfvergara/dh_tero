@@ -14,10 +14,11 @@ class GestionComercialController {
     	SessionHandler()->check_session();
     	$mes = date('Y-m');
     	$fecha_sys = date('Y-m-d');
-    	$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, tgc.denominacion AS GESTION, COUNT(gc.tipogestioncomercial) AS CANT";
+    	$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, COUNT(gc.tipogestioncomercial) AS CANT";
+    	//$select = "tgc.tipogestioncomercial_id AS TIPGESCOMID, tgc.denominacion AS GESTION, COUNT(gc.tipogestioncomercial) AS CANT";
     	$from = "gestioncomercial gc INNER JOIN tipogestioncomercial tgc ON gc.tipogestioncomercial = tgc.tipogestioncomercial_id";
     	//$where = "gc.fecha BETWEEN '{$mes}-01' AND '{$fecha_sys}'";
-    	$where = "gc.fecha BETWEEN '2021-07-01' AND '{$fecha_sys}'";
+    	$where = "gc.fecha >= '2021-07-01'";
     	$group_by = "gc.tipogestioncomercial ORDER BY COUNT(gc.tipogestioncomercial) DESC";
     	$cantidad_gestioncomercial = CollectorCondition('GestionComercial', $where, 4, $from, $select, $group_by);
 		print_r($cantidad_gestioncomercial);exit;
